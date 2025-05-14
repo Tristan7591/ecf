@@ -1,0 +1,33 @@
+# Global ignores
+*.log
+.DS_Store
+Thumbs.db
+
+# Node modules (anywhere)
+**/node_modules/
+
+# Build output (anywhere)
+**/dist/
+**/out-tsc/
+**/build/
+**/coverage/
+
+# Maven target (anywhere)
+**/target/
+
+# IDEs
+/.idea/
+/.vscode/
+*.iml
+*.ipr
+*.iws
+
+# Environment
+.env
+
+# Misc
+.sass-cache/
+/connect.lock
+/libpeerconnection.log
+testem.log
+/typings/ 
