@@ -1,0 +1,41 @@
+image: node:20-alpine
+
+stages:
+  - setup
+  - test
+  - build
+
+variables:
+  NPM_TOKEN: ${NPM_TOKEN}
+
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - node_modules/
+
+setup:
+  stage: setup
+  script:
+    - npm install -g @angular/cli
+    - npm install
+  artifacts:
+    paths:
+      - node_modules/
+
+test:
+  stage: test
+  script:
+    - ng test --watch=false --browsers=ChromeHeadless
+  dependencies:
+    - setup
+
+build:
+  stage: build
+  script:
+    - ng build --prod
+  artifacts:
+    paths:
+      - dist/
+    expire_in: 1 week
+  dependencies:
+    - setup 
